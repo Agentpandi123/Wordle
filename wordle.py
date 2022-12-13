@@ -2,8 +2,7 @@ import random
 from colorama import Fore, Style 
 
 def printInstructions():
-    print("(“Enter a five-letter word”)")
-
+    print("Enter a 5 letter word: ")
 
 def getRandomWord():
     words = open("/Users/edisonlin/CPSC 230/CPSC230 /ELin_Assignment6/words.txt")
@@ -15,7 +14,6 @@ def readInput(guess):
     words = open("/Users/edisonlin/CPSC 230/CPSC230 /ELin_Assignment6/words.txt")
     wordList= words.readlines()
     if guess not in wordList:
-        print("You need to guess an actual 5 letter word.")
         return "False"
     if guess in wordList:
         return "True"
@@ -45,16 +43,16 @@ printInstructions()
 word = getRandomWord()
 word_split = word.splitlines
 attempt = 0
-while attempt < 6:
+guess = getGuess()
+bruh = readInput(guess)
+if bruh == "False":
+    print("You need to guess an actual 5 letter word.")
     guess = getGuess()
-    if readInput(guess) == "True":
-        print(guess)
-        color = colorChange(guess, word)
-        print(color)
+while bruh == "True" and attempt < 6:
+    print(guess)
+    color = colorChange(guess, word)
+    print(color)
+    if attempt < 6:
         attempt += 1
-    if readInput(guess) == "False":
-        guess = getGuess()
-
-
-
-        
+    elif attempt > 6:
+        print("You lost! ")
