@@ -29,15 +29,15 @@ def getGuess():
 
 def colorChange(gues, word):
     color = ()
-    for i in range(len(guess)):
-        if guess[i] == word[i]:
-            color.append(f'{Fore.GREEN}{guess[i]}{Style.RESET_ALL}')
+    for i, item in enumerate(guess):
+        if item == word[i]:
+            color.append(f'{Fore.GREEN}{item}{Style.RESET_ALL}')
             return color
-        elif guess[i] in word:
-            color.append(f'{Fore.YELLOW}{guess[i]}{Style.RESET_ALL}')
+        elif item in word:
+            color.append(f'{Fore.YELLOW}{item}{Style.RESET_ALL}')
             return color
         else:
-             color.append(guess[i])
+             color.append(item)
              return color
 
 
